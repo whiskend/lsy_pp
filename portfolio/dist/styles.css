@@ -145,7 +145,7 @@ nav a:focus-visible::after {
   inset: 50% 0 0;
   background: linear-gradient(transparent, #0007);
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0;
   transition: opacity 0.45s ease;
 }
 .project-image {
@@ -155,44 +155,6 @@ nav a:focus-visible::after {
   object-fit: contain;
   transition: transform 0.7s var(--motion-ease);
 }
-.play-label {
-  position: absolute;
-  left: 28px;
-  bottom: 26px;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 17px;
-  color: #fff;
-  background: #171717b3;
-  border: 1px solid #ffffff50;
-  font-size: 14px;
-  backdrop-filter: blur(8px);
-  transition:
-    background 0.3s,
-    color 0.3s,
-    opacity 0.4s,
-    transform 0.5s var(--motion-ease);
-}
-.project-media:hover .play-label,
-.project-link:focus-visible .play-label {
-  background: var(--ink);
-  color: var(--paper);
-}
-.play-triangle {
-  height: 0;
-  width: 0;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-left: 6px solid currentColor;
-}
-.external-arrow {
-  margin-left: 20px;
-  font-size: 18px;
-  line-height: 1;
-  transition: transform 0.4s var(--motion-ease);
-}
 .frame-label {
   position: absolute;
   right: 28px;
@@ -201,9 +163,18 @@ nav a:focus-visible::after {
   color: #fffe;
   font-size: 12px;
   letter-spacing: 1.4px;
+  opacity: 0;
+  transform: translateY(10px);
   transition:
     opacity 0.4s,
     transform 0.5s var(--motion-ease);
+}
+.project-media.is-playing::after {
+  opacity: 1;
+}
+.project-media.is-playing .frame-label {
+  opacity: 1;
+  transform: translateY(0);
 }
 .project-caption {
   display: flex;
@@ -325,28 +296,9 @@ footer a span {
   transition: transform 0.4s var(--motion-ease);
 }
 @media (hover: hover) and (pointer: fine) {
-  .project-media .play-label,
-  .project-media .frame-label {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  .project-media:hover .project-image,
-  .project-link:focus-visible .project-image {
+  .project-media.is-playing .project-image {
     transform: scale(1.03);
   }
-  .project-media:hover::after,
-  .project-link:focus-visible .project-media::after {
-    opacity: 1;
-  }
-  .project-media:hover .play-label,
-  .project-media:hover .frame-label,
-  .project-link:focus-visible .play-label,
-  .project-link:focus-visible .frame-label {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .project-media:hover .external-arrow,
-  .project-link:focus-visible .external-arrow,
   .project-link:hover .youtube-link span,
   .project-link:focus-visible .youtube-link span {
     transform: translate(2px, -2px);
@@ -412,17 +364,6 @@ footer a span {
   .project-media {
     margin: 0 -22px;
   }
-  .play-label {
-    left: 22px;
-    bottom: 16px;
-    font-size: 12px;
-    padding: 9px 11px;
-    gap: 8px;
-  }
-  .external-arrow {
-    margin-left: 12px;
-    font-size: 16px;
-  }
   .frame-label {
     display: none;
   }
@@ -476,9 +417,7 @@ footer a span {
     animation: none !important;
   }
   .project-image,
-  .play-label,
   .frame-label,
-  .external-arrow,
   .youtube-link span,
   footer a span {
     transform: none !important;

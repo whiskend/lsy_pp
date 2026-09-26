@@ -19,6 +19,7 @@ function setMotion(shouldPlay) {
       : preview.dataset.stillSrc;
   }
   playing = nextPlaying;
+  previewArea.classList.toggle("is-playing", playing);
   motionText.textContent = playing ? "미리보기 일시정지" : "미리보기 재생";
   motionIcon.textContent = playing ? "Ⅱ" : "▷";
 }
