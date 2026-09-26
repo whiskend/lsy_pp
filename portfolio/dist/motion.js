@@ -32,4 +32,21 @@
   reveal(document.querySelector(".project-caption"), 240, 12);
   reveal(document.querySelector(".motion-toggle"), 280, 8);
 
+  let observer;
+  if ("IntersectionObserver" in window) {
+    observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          reveal(entry.target);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.12 },
+    );
+    for (const element of document.querySelectorAll(".about, footer")) {
+      observer.observe(element);
+    }
+  }
+
 })();
