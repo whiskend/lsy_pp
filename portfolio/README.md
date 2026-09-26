@@ -29,4 +29,8 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory portfolio/dist
 
 ## 게시
 
-`dist/` 전체를 정적 웹 호스팅에 올리면 됩니다. 현재 결과는 로컬 미리보기이며 온라인 게시를 수행하지 않았습니다. 제공된 YouTube 영상이 일부 공개 상태이므로 이후 게시 시 링크와 추출 장면의 공개 범위를 확인하세요.
+[공개 사이트](https://whiskend.github.io/lsy_pp/)는 GitHub Pages로 무료 호스팅합니다.
+
+`main` 브랜치의 `portfolio/dist/` 파일을 수정하고 GitHub에 올리면 자동으로 배포됩니다. 배포 설정은 `.github/workflows/deploy-pages.yml`이며, `portfolio/dist/` 안의 사이트 파일만 게시합니다. 문서만 수정한 경우에는 배포를 실행하지 않습니다.
+
+배포 상태는 저장소의 [Actions](https://github.com/whiskend/lsy_pp/actions/workflows/deploy-pages.yml)에서 확인할 수 있습니다. 필요한 경우 같은 화면의 `Run workflow`로 수동 재배포할 수 있습니다.
