@@ -1,5 +1,7 @@
 "use strict";
 
+document.getElementById("year").textContent = new Date().getFullYear();
+
 const preview = document.getElementById("film-preview");
 const motionButton = document.querySelector(".motion-toggle");
 const motionText = motionButton.querySelector(".motion-text");
