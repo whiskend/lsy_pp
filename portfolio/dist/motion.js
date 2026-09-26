@@ -49,4 +49,16 @@
     }
   }
 
+  // A keyboard destination should never wait for a visual entrance effect.
+  document.addEventListener("focusin", (event) => {
+    for (const animation of activeAnimations) {
+      if (animation.effect.target.contains(event.target)) animation.finish();
+    }
+  });
+
+  preference.addEventListener("change", (event) => {
+    if (!event.matches) return;
+    observer?.disconnect();
+    for (const animation of activeAnimations) animation.cancel();
+  });
 })();

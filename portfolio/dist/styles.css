@@ -475,4 +475,12 @@ footer a span {
     transition: none !important;
     animation: none !important;
   }
+  .project-image,
+  .play-label,
+  .frame-label,
+  .external-arrow,
+  .youtube-link span,
+  footer a span {
+    transform: none !important;
+  }
 }
