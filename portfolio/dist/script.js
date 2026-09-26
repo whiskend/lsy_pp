@@ -16,6 +16,13 @@ function setMotion(shouldPlay) {
   motionIcon.textContent = shouldPlay ? "Ⅱ" : "▷";
 }
 
+// Keep the poster and YouTube link usable if GIF loading fails.
+preview.addEventListener("error", () => {
+  if (playing) {
+    setMotion(false);
+    motionButton.hidden = true;
+  }
+});
 motionButton.addEventListener("click", () => setMotion(!playing));
 reducedMotion.addEventListener("change", (event) => setMotion(!event.matches));
 motionButton.hidden = false;
