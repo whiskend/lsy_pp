@@ -4,6 +4,7 @@ const preview = document.getElementById("film-preview");
 const motionButton = document.querySelector(".motion-toggle");
 const motionText = motionButton.querySelector(".motion-text");
 const motionIcon = motionButton.querySelector(".motion-icon");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let playing = false;
 
 function setMotion(shouldPlay) {
@@ -16,5 +17,6 @@ function setMotion(shouldPlay) {
 }
 
 motionButton.addEventListener("click", () => setMotion(!playing));
+reducedMotion.addEventListener("change", (event) => setMotion(!event.matches));
 motionButton.hidden = false;
-setMotion(true);
+setMotion(!reducedMotion.matches);
