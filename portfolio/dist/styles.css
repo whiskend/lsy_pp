@@ -258,3 +258,112 @@ footer a:hover {
 footer a span {
   margin-left: 10px;
 }
+@media (min-width: 1600px) {
+  .page {
+    width: 85%;
+  }
+  .header {
+    min-height: 168px;
+  }
+}
+@media (max-width: 700px) {
+  .page {
+    width: auto;
+    margin: 0 22px;
+  }
+  .header {
+    min-height: 137px;
+    padding: 29px 0 35px;
+  }
+  .wordmark {
+    font-size: 24px;
+  }
+  .wordmark-caption {
+    font-size: 12px;
+    letter-spacing: 0.6px;
+  }
+  nav {
+    gap: 22px;
+    font-size: 14px;
+  }
+  .section-bar {
+    margin-bottom: 18px;
+  }
+  .project-caption {
+    gap: 16px;
+    padding-top: 18px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .project-title {
+    gap: 14px;
+  }
+  .project-title h2 {
+    font-size: 27px;
+  }
+  .project-genre {
+    font-size: 12px;
+    letter-spacing: 0.6px;
+  }
+  .project-details {
+    font-size: 12px;
+    gap: 18px;
+    line-height: 1.6;
+    flex-wrap: wrap;
+  }
+  .project-media {
+    margin: 0 -22px;
+  }
+  .play-label {
+    left: 22px;
+    bottom: 16px;
+    font-size: 12px;
+    padding: 9px 11px;
+    gap: 8px;
+  }
+  .external-arrow {
+    margin-left: 12px;
+    font-size: 16px;
+  }
+  .frame-label {
+    display: none;
+  }
+  .motion-toggle {
+    margin-top: 4px;
+  }
+  .about {
+    margin-top: 56px;
+    padding-top: 25px;
+    padding-bottom: 48px;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+  }
+  .discipline {
+    display: none;
+  }
+  .about-copy .name {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+  footer {
+    font-size: 12px;
+    padding: 23px 0 28px;
+  }
+}
+@media (max-width: 360px) {
+  nav {
+    gap: 16px;
+  }
+  .wordmark-caption {
+    letter-spacing: 0;
+  }
+  .about {
+    grid-template-columns: 1fr;
+  }
+  .about > h2 {
+    margin-bottom: 8px;
+  }
+  .project-title {
+    width: 100%;
+  }
+}
