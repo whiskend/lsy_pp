@@ -4,6 +4,7 @@
   --muted: #949491;
   --line: #333331;
   --paper: #101010;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
   font-family:
     Arial, "Helvetica Neue", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   color: var(--ink);
@@ -130,16 +131,15 @@ nav a:hover {
   inset: 50% 0 0;
   background: linear-gradient(transparent, #0007);
   pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 0.45s ease;
 }
 .project-image {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.project-link:hover .project-image {
-  transform: scale(1.015);
+  transition: transform 0.7s var(--motion-ease);
 }
 .play-label {
   position: absolute;
@@ -156,10 +156,13 @@ nav a:hover {
   font-size: 14px;
   backdrop-filter: blur(8px);
   transition:
-    background 0.2s,
-    color 0.2s;
+    background 0.3s,
+    color 0.3s,
+    opacity 0.4s,
+    transform 0.5s var(--motion-ease);
 }
-.project-link:hover .play-label {
+.project-media:hover .play-label,
+.project-link:focus-visible .play-label {
   background: var(--ink);
   color: var(--paper);
 }
@@ -174,6 +177,7 @@ nav a:hover {
   margin-left: 20px;
   font-size: 18px;
   line-height: 1;
+  transition: transform 0.4s var(--motion-ease);
 }
 .frame-label {
   position: absolute;
@@ -183,6 +187,9 @@ nav a:hover {
   color: #fffe;
   font-size: 12px;
   letter-spacing: 1.4px;
+  transition:
+    opacity 0.4s,
+    transform 0.5s var(--motion-ease);
 }
 .project-caption {
   display: flex;
@@ -220,7 +227,9 @@ nav a:hover {
   color: var(--ink);
 }
 .youtube-link span {
+  display: inline-block;
   padding-left: 9px;
+  transition: transform 0.4s var(--motion-ease);
 }
 .motion-toggle {
   display: flex;
@@ -298,6 +307,34 @@ footer a:hover {
 }
 footer a span {
   margin-left: 10px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-media .play-label,
+  .project-media .frame-label {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  .project-media:hover .project-image,
+  .project-link:focus-visible .project-image {
+    transform: scale(1.03);
+  }
+  .project-media:hover::after,
+  .project-link:focus-visible .project-media::after {
+    opacity: 1;
+  }
+  .project-media:hover .play-label,
+  .project-media:hover .frame-label,
+  .project-link:focus-visible .play-label,
+  .project-link:focus-visible .frame-label {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .project-media:hover .external-arrow,
+  .project-link:focus-visible .external-arrow,
+  .project-link:hover .youtube-link span,
+  .project-link:focus-visible .youtube-link span {
+    transform: translate(2px, -2px);
+  }
 }
 @media (min-width: 1600px) {
   .page {
