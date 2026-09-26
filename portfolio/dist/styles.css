@@ -222,6 +222,29 @@ nav a:hover {
 .youtube-link span {
   padding-left: 9px;
 }
+.motion-toggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 12px 0 0 auto;
+  min-height: 44px;
+  padding: 10px 0 10px 12px;
+  border: 0;
+  color: var(--muted);
+  background: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+.motion-toggle[hidden] {
+  display: none;
+}
+.motion-toggle:hover {
+  color: var(--ink);
+}
+.motion-icon {
+  width: 14px;
+  text-align: center;
+}
 .about {
   margin-top: 87px;
   padding: 35px 0 80px;
