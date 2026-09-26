@@ -9,9 +9,10 @@ const motionText = motionButton.querySelector(".motion-text");
 const motionIcon = motionButton.querySelector(".motion-icon");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let playing = false;
+let motionAvailable = true;
 
 function setMotion(shouldPlay) {
-  const nextPlaying = shouldPlay;
+  const nextPlaying = shouldPlay && motionAvailable;
   if (playing !== nextPlaying) {
     preview.src = nextPlaying
       ? preview.dataset.motionSrc
@@ -34,6 +35,7 @@ previewArea.addEventListener("pointerleave", (event) => {
 // Keep the poster and YouTube link usable if GIF loading fails.
 preview.addEventListener("error", () => {
   if (playing) {
+    motionAvailable = false;
     setMotion(false);
     motionButton.hidden = true;
   }
