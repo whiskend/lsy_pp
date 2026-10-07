@@ -8,6 +8,8 @@
 
 실행·수정 안내: [portfolio/README.md](portfolio/README.md)
 
+커밋·PR 작업 규칙: [AGENTS.md](AGENTS.md)
+
 ```sh
 node portfolio/tools/build.mjs
 python3 -m http.server 4173 --bind 127.0.0.1 --directory portfolio/dist
